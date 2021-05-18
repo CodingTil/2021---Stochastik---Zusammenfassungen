@@ -126,7 +126,7 @@ Für [Ausprägungen](#datum) $y_{1}, \dots, y_{n} \in \mathbb{R}$ eines [metrisc
 $$y_{(1)} \leq \dots\leq y_{(n)}$$
 
 Ligen im Datensatz $x_{1}, \dots, x_{n}$ insgesamt $m$ verschiede [Ausprägugnen](#datum) $u_{(1)} < \dots< u_{(m)}$ mit zugehörigen [relativen Häufigkeiten](#relative-häufigkeit) $f_{(1)}, \dots, f_{(m)}$ vor, so gilt:
-$$F_{n}(x) = \begin{cases} 0, & x < u_{(1)} \\ \sum_{j=1}^{k} f_{(j)}, & u_{(k)} \leq x < u_{(k+1)}, k \in \{1, \dots, m-1\} \\ 1, & x \geq u_{(m)} \end{cases}$$
+$$F_{n}(x) = \begin{cases} 0, & x < u_{(1)} \\ \sum\limits_{j=1}^{k} f_{(j)}, & u_{(k)} \leq x < u_{(k+1)}, k \in \{1, \dots, m-1\} \\ 1, & x \geq u_{(m)} \end{cases}$$
 
 Es gilt:
  - $f_{(j)} = F_{n}(u_{(j)}) - F_{n}(u_{(j - 1)})$
@@ -172,7 +172,7 @@ Das **arithmetische Mittel** $\bar{x}_{n}$ bzw. $\bar{x}$ ist definiert durch:
 $$\bar{x}_{n} \coloneqq \frac{1}{n} \cdot \sum_{i=1}^{n} x_{i}$$
 $$\bar{x}_{n} = \sum_{i=1}^{m} f_{j} \cdot u_{j}$$
 
-Seien $g_{1}, \dots, g_{n} \geq 0$ mit $\sum_{i=1}^{n} g_i = 1$.
+Seien $g_{1}, \dots, g_{n} \geq 0$ mit $\sum\limits_{i=1}^{n} g_i = 1$.
 Das **gewichtete arithmetische Mittel** ist definiert durch:
 $$\bar{x}_{g} \coloneqq \sum_{i=1}^{n} g_{i} \cdot x_{i}$$
 
@@ -228,7 +228,7 @@ $$s^{2} = s_{n}^{2} \coloneqq \sum_{j=1}^{m} f_{j} (u_{j} - \bar{x}_{n})^{2}$$
 **Empirische Standardabweichung**:
 $$s = s_{n} \coloneqq \sqrt{s_{n}^{2}}$$
 
-Es gilt für $a \in \mathbb{R}$: $\frac{1}{n} \cdot \sum_{i=1}^{n} (x_{i} - a)^{2} = s^{2} + (\bar{x} - a)^{2}$
+Es gilt für $a \in \mathbb{R}$: $\frac{1}{n} \cdot \sum\limits_{i=1}^{n} (x_{i} - a)^{2} = s^{2} + (\bar{x} - a)^{2}$
 bzw. für $a=0$: $s^{2} = \bar{x^{2}} - \bar{x}^{2}$
 
 Sei:
@@ -394,7 +394,7 @@ $$\begin{align*} \hat{b} & \coloneqq \frac{s_{xy}}{x_{x}^{2}} \\ \hat{a} & \colo
  - **Geschätzte Regressionsgerade**: $\hat{f}(x) = \hat{a} + \hat{b} \cdot x$
  - $\hat{\operatorname{f}}(\bar{x}) = \bar{y}$
  - $\bar{\hat{y}} = \bar{y}$
- - $\sum_{i=1}^{n} \epsilon_{i} = 0$
+ - $\sum\limits_{i=1}^{n} \epsilon_{i} = 0$
  - Für $s_{y}^{2} > 0$ ist $\hat{\operatorname{f}}$ genau dann wachsend, wenn:
 $$\hat{b} = \frac{s_{y}}{s_{x}} \cdot r_{xy} \begin{cases} > \\ < \\ = \end{cases} 0 \Leftrightarrow r_{xy} \begin{cases} > \\ < \\ = \end{cases} 0$$
 
@@ -415,12 +415,12 @@ $$\begin{align*} \hat{c} & = \delta \cdot \hat{a} + \gamma - \frac{\alpha \cdot 
 ## Bewertung der Anpassung
 Sei $\hat{\operatorname{f}}$ die mittels der [Methode der kleinsten Quadrate](#methode-der-kleinsten-quadrate) geschätzte [Regressionsgerade](#lineares-regressionsmodell).
  - Die Differenzen $\hat{e}_{i} = y_{i} - \hat{y}_{i}$ mit $\hat{y}_{i} = \hat{\operatorname{f}}(x_{i})$ werden als **Residuen** bezeichnet.
- - Für $\sum_{i=1}^{n} \hat{e}_{i}^{2} > 0$ sind die **standardisierten Residuen** definiert durch (siehe [Standardisierung](#standardisierung)):
-$$\hat{d}_{i} = \frac{\hat{e}_{i}}{\sqrt{\sum_{i=1}^{n} \hat{e}_{i}^{2}}}$$
+ - Für $\sum\limits_{i=1}^{n} \hat{e}_{i}^{2} > 0$ sind die **standardisierten Residuen** definiert durch (siehe [Standardisierung](#standardisierung)):
+$$\hat{d}_{i} = \frac{\hat{e}_{i}}{\sqrt{\sum\limits_{i=1}^{n} \hat{e}_{i}^{2}}}$$
  - Seien $\hat{d}_{1}, \dots, \hat{d}_{n}$ die standardisierten Residuen zu $\hat{e}_{1}, \dots, \hat{e}_{n}$:
    - $-1 \leq \hat{d}_{i} \leq 1$
-   - $\sum_{i=1}^{n} \hat{d}_i = 0, \sum_{i=1}^{n} \hat{d}_i^{2} = 1$
- - Für $\sum_{i=1}^{n} \hat{e}_{i}^{2} = 0$ ist $y_{i} = \hat{y}_{i}, i \in \{1, \dots, n\}$
+   - $\sum\limits_{i=1}^{n} \hat{d}_i = 0, \sum\limits_{i=1}^{n} \hat{d}_i^{2} = 1$
+ - Für $\sum\limits_{i=1}^{n} \hat{e}_{i}^{2} = 0$ ist $y_{i} = \hat{y}_{i}, i \in \{1, \dots, n\}$
 
 Die Güte der Approximation der [Regressionsfunktion](#regressionsanalyse) an die Daten wird gemessen durch das **Bestimmtheitsmaß**
 $$B_{xy} = r_{xy}^{2}$$
