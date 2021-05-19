@@ -388,7 +388,7 @@ $$Y = a + b \cdot X + \epsilon$$
 **lineares Regressionsmodell**. Die [Regressionsfunktion](#regressionsanalyse) heißt auch **Regressionsgerade**.
 
 Für $s_{x}^{2} > 0$ gilt für die Lösung:
-$$\begin{align*} \hat{b} & \coloneqq \frac{s_{xy}}{x_{x}^{2}} \\ \hat{a} & \coloneqq \bar{y} - \hat{b} \cdot \bar{x} \end{align*}$$
+$$\begin{align*} \hat{b} & \coloneqq \frac{s_{xy}}{s_{x}^{2}} \\ \hat{a} & \coloneqq \bar{y} - \hat{b} \cdot \bar{x} \end{align*}$$
 
  - **Minimaler Abstand**: $\operatorname{Q}(\hat{a}, \hat{b}) = n \cdot s_{y}^{2} \cdot (1 - r_{xy}^{2})$
  - **Geschätzte Regressionsgerade**: $\hat{f}(x) = \hat{a} + \hat{b} \cdot x$
