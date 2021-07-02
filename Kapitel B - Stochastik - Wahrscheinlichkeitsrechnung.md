@@ -3,6 +3,8 @@
  - [Diskrete Wahrscheinlichkeitsverteilung](#diskrete-wahrscheinlichkeitsverteilung)
  - [Wahrscheinlichkeitsmaße mit Riemann-Dichten](#wahrscheinlichkeitsmaße-mit-riemann-dichten)
  - [Eigenschaften von Wahrscheinlichkeitsmaßen](#eigenschaften-von-wahrscheinlichkeitsmaßen)
+ - [Bedingte Wahrscheinlichkeiten](#bedingte-wahrscheinlichkeiten)
+ - [Stochastische Unabhängigkeiten von Ereignissen](#stochastische-unabhängigkeiten-von-ereignissen)
 
 ---------------
 
@@ -279,7 +281,7 @@ $$\operatorname{f}(x) = \frac{\Gamma(\frac{n+1}{2})}{\sqrt{n \pi} \Gamma(\frac{n
 
 ### $\mathcal{F}$-Verteilung
 **$\mathcal{F}$-Verteilung** $\mathcal{F}(n,m)$ mit $n \in \mathbb{N}$ und $m \in \mathbb{N}$ Freiheitsgraden:
-$$\operatorname{f}(x) = \begin{cases} \frac{\Gamma(\frac{n+m}{2})}{\Gamma(\frac{n}{2}) \Gamma(\frac{m}{2})} (\frac{n}{n})^{\frac{n}{2}} \frac{x^{\frac{n}{2} - 1}}{(1 + \frac{n}{m} x)^{\frac{n+m}{2}}}, & x > 0 \\ 0, x \leq 0 \end{cases}$$
+$$\operatorname{f}(x) = \begin{cases} \frac{\Gamma(\frac{n+m}{2})}{\Gamma(\frac{n}{2}) \Gamma(\frac{m}{2})} (\frac{n}{m})^{\frac{n}{2}} \frac{x^{\frac{n}{2} - 1}}{(1 + \frac{n}{m} x)^{\frac{n+m}{2}}}, & x > 0 \\ 0, x \leq 0 \end{cases}$$
 
 ---------------
 
@@ -309,6 +311,83 @@ Obige Transformation führt zu einer
 <br>
 
 # Eigenschaften von Wahrscheinlichkeitsmaßen
+Sei $(\Omega, \mathfrak{A}, \operatorname{P})$ ein [Wahrscheinlichkeitsraum](#wahrscheinlichkeitsraum). Dann gelten für $A,B \in \mathfrak{A}$:
+ - $\operatorname{P}(A \cup B) = \operatorname{P}(A) + \operatorname{P}(B)$, falls $A \cap B = \emptyset$
+ - $\operatorname{P}(B \setminus A) = \operatorname{P}(B) - \operatorname{P}(A)$, falls $A \subseteq B$
+ - $\operatorname{P}(A^C) = 1 - \operatorname{P}(A)$
+ - $A \subseteq B \Rightarrow \operatorname{P}(A) \leq \operatorname{P}(B)$
+ - $\operatorname{P}(A \cup B) = \operatorname{P}(A) + \operatorname{P}(B) - \operatorname{P}(A \cap B)$
+
+Für $A_1, A_2, \dots \in \mathfrak{A}$ gilt:
+ - $\operatorname{P}(\bigcup\limits_{i=1}^{n} A_i) \leq \sum\limits_{i=1}^{n} \operatorname{P}(A_i)$
+ - $\operatorname{P}(\bigcup\limits_{i=1}^{\infty} A_i) \leq \sum\limits_{i=1}^{\infty} \operatorname{P}(A_i)$
+ - $$\begin{align*} \operatorname{P}(\bigcup\limits_{k=1}^{n} A_k) = \sum\limits_{k=1}^{n} \operatorname{P}(A_k) &- \sum\limits_{1 \leq i_1 < i_2 \leq n} \operatorname{P}(A_{i_1} \cap A_{i_2}) \\ &+ \sum\limits_{1 \leq i_1 < i_2 < i_3 \leq n} \operatorname{P}(A_{i_1} \cap A_{i_2} \cap A_{i_3}) \\ & \mp \dots + (-1)^{n+1} \operatorname{P}(\bigcap\limits_{k=1}^{n} A_k) \end{align*}$$
+
+---------------
+
+<br>
+
+# Bedingte Wahrscheinlichkeiten
+**Ziel:**
+Beschreibung des Einflusses von Vor- oder Zusatzinformationen bzw. dereren Einbezug in ein stochastisches Modell.
+
+Sei $(\Omega, \mathfrak{A}, \operatorname{P})$ ein [Wahrscheinlichkeitsraum](#wahrscheinlichkeitsraum). Für jedes $B \in \mathfrak{A}$ mit $\operatorname{P}(B) > 0$ wird durch
+$$\operatorname{P}(A \vert B) = \frac{\operatorname{P}(A \cap B)}{\operatorname{P}(B)}, A \in \mathfrak{A}$$
+eine [Wahrscheinlichkeitsverteilung](#wahrscheinlichkeitsverteilung) $\operatorname{P}(\cdot \vert B)$ auf $\mathfrak{A}$ definiert, die sogenannte **bedingte Verteilung** unter der Hypothese $B$. $\operatorname{P}(A \vert B)$ heißt **elementar bedingte Wahrscheinlichkeit von $A$ und $B$**.
+
+ - $(\Omega, \mathfrak{A}, \operatorname{P}(\cdot \vert B))$ ist ein [Wahrscheinlichkeitsraum](#wahrscheinlichkeitsraum)
+ - Wegen $\operatorname{P}(A \vert B) = \operatorname{P}(A \cap B \vert B)$ ist auch $(B, \{A \cap B \vert A \in \mathfrak{A}\}, \operatorname{P}(\cdot \vert B))$  ein [Wahrscheinlichkeitsraum](#wahrscheinlichkeitsraum) über dem Grundraum $B \subseteq \Omega$
+ - Die Menge $\{A \cap B \vert A \in \mathfrak{A}\}$ ist eine [$\sigma$-Algebra](#sigma-algebra) über $B$.
+
+Seien $A,B \in \mathfrak{A}$ mit $\operatorname{P}(A) > 0 < \operatorname{P}(B)$ sowie $A_1, \dots, A_n \in \mathfrak{A}$ mit $\operatorname{P}(\bigcap\limits_{i=1}^{n} A_i) > 0$. Dann gilt:
+ - $\operatorname{P}(A \vert B) = \operatorname{P}(B \vert A) \cdot \frac{\operatorname{P}(A)}{\operatorname{P}(B)}$
+ - $\operatorname{P}(\bigcap\limits_{i=1}^{n} A_i) = \operatorname{P}(A_1) \cdot \operatorname{P}(A_2 \vert A_1) \cdot \operatorname{P}(A_3 \vert A_1 \cap A_2) \cdot \dots \cdot \operatorname{P}(A_n \vert \bigcap\limits_{i=1}^{n} A_i)$
+
+### Formel von der totalen Wahrscheinlichkeit
+Seien $A \in \mathfrak{A}, (B_n)_n \subseteq \mathfrak{A}$, $B_n$ paarweise disjunkt mit $A \subseteq \bigcup\limits_{n=1}^{\infty} B_n$. Dann gilt:
+$$\operatorname{P}(A) = \sum\limits_{n=1}^{\infty} \operatorname{P}(A \cap B_n) = \sum\limits_{n=1}^{\infty} \operatorname{P}(A \vert B_n) \cdot \operatorname{P}(B_n)$$
+
+_Ist $\operatorname{P}(B_k) = 0$, so ist $\operatorname{P}(A \vert B_k)$ nicht defineirt. Man setzt in diesem Fall $\operatorname{P}(B_k) \cdot \operatorname{P}(A \vert B_k) = 0$ mit $\operatorname{P}(A \vert B_k) \in [0,1]$ beliebig._
+
+### Bayessche Formel
+Seien $A \in \mathfrak{A}, (B_n)_n \subseteq \mathfrak{A}$, $B_n$ paarweise disjunkt mit $A \subseteq \bigcup\limits_{n=1}^{\infty} B_n$ mit $\operatorname{P}(A) > 0$. Dann gilt für jedes $k \in \mathbb{N}$:
+$$\operatorname{P}(B_k \vert A) = \frac{\operatorname{P}(B_k) \cdot \operatorname{P}(A \vert B_k)}{\sum\limits_{n=1}^{\infty} \operatorname{P}(A \vert B_n) \cdot P(B_n)}$$
+
+---------------
+
+<br>
+
+# Stochastische Unabhängigkeiten von Ereignissen
+Seien $(\Omega, \mathfrak{A}, \operatorname{P})$ ein [Wahrscheinlichkeitsraum](#wahrscheinlichkeitsraum) und $A,B \in \mathfrak{A}$. Die Ereignisse $A$ und $B$ heißen **stochastisch unabhängig** wenn:
+$$\operatorname{P}(A \cap B) = \operatorname{P}(A) \cdot \operatorname{P}(B)$$
+ - Sind $A$ und $B$ stochastisch unabhängig, dann auch
+   - $A$ und $B^C$
+   - $A^C$ und $B$
+   - $A^C$ und $B^C$
+ - Ist $\operatorname{P}(B) > 0$, so gilt:
+	$A$ und $B$ stochastisch unabhängig $\Leftrightarrow$ $\operatorname{P}(A \vert B) = \operatorname{P}(A)$
+ - Ist $\operatorname{P}(A) \in \{0,1\}$, so gilt für alle $B \in \mathfrak{A}$, dass
+	$A$ und $B$ stochastisch unabhängig sind.
+
+Seien $I$ eine Indexmenge, $A_i \in \mathfrak{A}, i \in I$. Dann heißen die Ereignisse
+ - **paarweise stochastisch unabhängig**, falls:
+	$\operatorname{P}(A_i \cap A_j) = \operatorname{P}(A_i) \cdot \operatorname{P}(A_j), \forall i,j \in I, i \neq j$
+ - **(gemeinsam) stochastisch unabhängig**, falls für _jede_ endliche Auswahl von Indizes $\{i_1, \dots, i_s\} \subseteq I$ gilt:
+	$\operatorname{P}(A_{i_1} \cap \dots \cap A_{i_s}) = \operatorname{P}(A_{i_1}) \cdot \dots \cdot \operatorname{P}(A_{i_s})$
+
+**Gemeinsame** stochastische Unabhängigkeit impliziert **paarweise** stochastische Unabhängigkeit.
+
+Sind $A_1, \dots, A_n$ stochastisch unabhängig, dann gilt:
+$$\operatorname{P}(\bigcup\limits_{i=1}^{n} A_i) = 1 - \operatorname{P}(\bigcap\limits_{i=1}^{n} A_i^C) = 1 - \prod\limits_{i=1}^{n} (1 - \operatorname{P}(A_i))$$
+
+## Produktraum
+Für diskrete [Wahrscheinlichkeitsräume](#wahrscheinlichkeitsraum) $(\Omega_i, \mathfrak{A}_i, \operatorname{P}_i), 1 \leq i \leq n$ heißt $(\Omega, \mathfrak{A}, \operatorname{P})$ mit
+$$\Omega \coloneqq ⨉_{i=1}^{n} \Omega_i = \{(\omega_1, \dots, \omega_n) \mid \omega_i \in \Omega_i, 1 \leq i \leq n\}$$
+$\mathfrak{A}$ Potenzmenge von $\Omega$ und $\operatorname{P}$ definiert durch die Zähldichte
+$$\operatorname{f}(\omega) = \operatorname{P}(\{\omega\}) = \operatorname{P}(\{(\omega_1, \dots, \omega_n)\}) = \prod\limits_{i=1}^{n} \operatorname{P}(\{\omega_i\})$$
+**Produkt der Wahrscheinlichkeitsräume**. Der Wahrscheinlichkeitsraum
+$$(\Omega, \mathfrak{A}, \operatorname{P}) = \bigotimes\limits_{i=1}^{n} (\Omega_i, \mathfrak{A}_i, \operatorname{P}_i)$$
+heißt **Produktraum**.
 
 ---------------
 
