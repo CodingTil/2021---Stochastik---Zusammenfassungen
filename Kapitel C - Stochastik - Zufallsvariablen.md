@@ -5,6 +5,7 @@
  - [Transformation von Zufallsvariablen](#transformation-von-zufallsvariablen)
  - [Erwartungswerte, Varianz, Kovarianz und Korrelation](#erwartungswerte-varianz-kovarianz-und-korrelation)
  - [Erzeugende Funktionen](#erzeugende-funktionen)
+ - [Grenzwertsätze](#grenzwertsätze)
 
 ---------------
 
@@ -170,6 +171,17 @@ Enthalte $D$ ein Intervall der Form $(-\epsilon, \epsilon)$ für ein $\epsilon >
  - Es existieren alle absoluten Momente $\operatorname{E}(\vert \operatorname{X} \vert ^k)$ endlich.
  - $\operatorname{h}$ ist im Nullpunkt beliebig oft differenzierbar und es gilt $$\operatorname{h}^{(k)}(0) = \operatorname{E}\operatorname{X}^k$$
 
+Seien $\operatorname{X},\operatorname{Y}$ stochastisch uabhängige Zufallsvariablen, deren momenterzeugende Funktionen auf $D$ endlich existieren. Dann gilt: $$\operatorname{E}e^{t(\operatorname{X}+\operatorname{Y})} = \operatorname{E}e^{t\operatorname{X}} \cdot \operatorname{E}e^{t\operatorname{Y}}$$
+Mit vollständiger Induktion gilt diese Eigenschaft wiederum für jede endliche Summe unabhängiger Zufallsvariablen $\operatorname{X}_1, \operatorname{X}_2, \dots$
+
 ---------------
 
 <br>
+
+# Grenzwertsätze
+Sei $\operatorname{X}_1, \operatorname{X}_2, \dots$ eine Folge stochastisch unabhängiger, identisch verteilter Zufallsvariablen mit $\operatorname{E}\operatorname{X}_1 = \mu$ und $0 < \operatorname{Var}\operatorname{X}_1 = \sigma^2 < \infty$. Dann gilt für $$\operatorname{S}_n^* = \frac{\sum_{i=1}{n} \operatorname{X}_i - n \mu}{\sigma \sqrt{n}}$$ $$\lim_{n \rightarrow \infty} \operatorname{P}(\operatorname{S}_n^* \leq t) = \int_{-\infty}^{t} \frac{1}{\sqrt{2 \pi}} e^{\frac{-x^2}{2}} dx = \Phi(t), t\in\R$$
+**&rarr; $\Phi$ ist die Verteilungsfunktion der Standardnormalverteilung**
+
+Summe $\operatorname{S}_n^*$ ist die **standardisierte Summe der $X_i$'s**, denn:
+ - $\operatorname{E}\operatorname{S}_n^* = 0$
+ - $\operatorname{Var}\operatorname{S}_n^* = 1$
