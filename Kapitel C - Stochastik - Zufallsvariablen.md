@@ -185,3 +185,4 @@ Sei $\operatorname{X}_1, \operatorname{X}_2, \dots$ eine Folge stochastisch unab
 Summe $\operatorname{S}_n^*$ ist die **standardisierte Summe der $X_i$'s**, denn:
  - $\operatorname{E}\operatorname{S}_n^* = 0$
  - $\operatorname{Var}\operatorname{S}_n^* = 1$
+
